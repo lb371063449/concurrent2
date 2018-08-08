@@ -31,6 +31,7 @@ public class FastThreadLocalDemo {
         }
     }
 
+
     @Test
     public void test1() throws InterruptedException {
         CountDownLatch ctd = new CountDownLatch(2);
