@@ -13,7 +13,5 @@ public class LogbackTest {
         logger.info("=====info=====");
         logger.warn("=====warn=====");
         logger.error("=====error=====");
-
-
     }
 }
