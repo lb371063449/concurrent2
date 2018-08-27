@@ -1,7 +1,6 @@
 package com.rinbo.netty.theadlocal;
 
 import io.netty.util.concurrent.FastThreadLocal;
-import io.netty.util.concurrent.FastThreadLocalThread;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -30,7 +29,6 @@ public class FastThreadLocalDemo {
             System.out.println(value + " is removed!");
         }
     }
-
 
     @Test
     public void test1() throws InterruptedException {

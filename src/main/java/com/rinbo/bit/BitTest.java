@@ -1,8 +1,10 @@
 package com.rinbo.bit;
 
+import org.junit.Test;
+
 import java.util.Arrays;
 
-public class BitDemo {
+public class BitTest {
 
     public static void main(String[] args) {
         //只要根据最未位是0还是1来决定，为0就是偶数，为1就是奇数
@@ -49,5 +51,48 @@ public class BitDemo {
         }
 
         System.out.println(Arrays.toString(primes));
+    }
+
+
+    @Test
+    public void test2CF() {
+        System.out.println(get2CF(2222));
+    }
+
+    /**
+     * 返回大于value的最小2的x方的数
+     */
+    private long get2CF(long value) {
+        value --;
+        value |= value >>>  1;
+        value |= value >>>  2;
+        value |= value >>>  4;
+        value |= value >>>  8;
+        value |= value >>> 16;
+        value ++;
+        return value;
+    }
+
+    /**
+     * 判断一个数是否小于2的n次方
+     * @return
+     */
+    private boolean compare2CF(long value) {
+        //2048是2的11次方
+        return (value & -2048) == 0;
+    }
+
+    /**
+     * 2的n次方的负数
+     * @param value
+     * @return
+     */
+    private long getFS(long value) {
+        return  ~(value - 1);
+    }
+
+    //2的对数
+    private static int log2(int val) {
+        return (Integer.SIZE - 1) - Integer.numberOfLeadingZeros(val);
     }
 }
