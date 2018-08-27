@@ -25,12 +25,6 @@ public class SimpleServer {
                         @Override
                         public void initChannel(SocketChannel ch) throws Exception {
                             ChannelPipeline p = ch.pipeline();
-//                            //解码处理器
-//                            p.addLast(new DecoderHandler());
-//                            //计算处理器
-//                            p.addLast(new ComputeHandler());
-//                            //编码处理器
-//                            p.addLast(new EncoderHandler());
                         }
                     });
             ChannelFuture f = b.bind(8888).sync();
