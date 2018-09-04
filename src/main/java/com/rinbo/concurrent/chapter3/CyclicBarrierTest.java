@@ -6,6 +6,7 @@ public class CyclicBarrierTest {
     private static CyclicBarrier cyclicBarrier;
 
     static class CyclicBarrierThread extends Thread{
+        @Override
         public void run() {
             System.out.println(Thread.currentThread().getName() + "到了");
             //等待

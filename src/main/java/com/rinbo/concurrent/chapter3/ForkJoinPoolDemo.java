@@ -19,6 +19,7 @@ public class ForkJoinPoolDemo {
             this.end = end;
         }
 
+        @Override
         protected Long compute() {
             long sum = 0;
             boolean canCompute = (end-start)<THRESHOLD;
@@ -54,7 +55,7 @@ public class ForkJoinPoolDemo {
         //创建ForkJoinPool线程池
         ForkJoinPool pool = new ForkJoinPool();
         //创建ForkJoinTask
-        CountTask task = new CountTask(0,200000l);
+        CountTask task = new CountTask(0,200000L);
         //执行ForkJoinTask
         ForkJoinTask<Long> result = pool.submit(task);
         try {

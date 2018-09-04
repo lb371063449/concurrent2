@@ -8,6 +8,7 @@ public class BlockingQueueTest {
         final BlockingQueue<Integer> queue = new ArrayBlockingQueue<Integer>(3);//该队列里面只能放3个Integer
         for(int i=0;i<6;i++){
             new Thread("p" + i){
+                @Override
                 public void run(){
                     while(true){
                         try {
@@ -25,6 +26,7 @@ public class BlockingQueueTest {
         }
         for(int i=0;i<3;i++){
             new Thread("c" + i){
+                @Override
                 public void run(){
                     while(true){
                         try {
