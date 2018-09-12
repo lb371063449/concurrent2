@@ -36,7 +36,7 @@ public class RPCServer {
                             ch.pipeline().addLast(new StringEncoder());
                         }
                     });
-            ChannelFuture f = b.bind(8080).sync();
+            ChannelFuture f = b.bind(9999).sync();
             f.channel().closeFuture().sync();
         } finally {
             boss.shutdownGracefully();
