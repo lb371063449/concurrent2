@@ -10,7 +10,9 @@ public class SchedulerTest {
 
     @Test
     public void testScheduling() throws InterruptedException {
-        Flux.just(1,2,3,4).publishOn(Schedulers.newParallel("myParallel")).subscribe(System.out::println);
+        Flux.just(1,2,3,4).publishOn(Schedulers.newParallel("myParallel")).map(i->i*2).subscribe(System.out::println);
+//        Flux.just(1,2,3,4).subscribeOn(Schedulers.newParallel("myParallel")).map(i->i*2).subscribe(System.out::println);
+
     }
 
     @Test
