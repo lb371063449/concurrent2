@@ -1,6 +1,7 @@
 package com.rinbo.patterns;
 
 import lombok.extern.slf4j.Slf4j;
+import net.sf.cglib.core.DebuggingClassWriter;
 import net.sf.cglib.proxy.*;
 import org.junit.Test;
 
@@ -61,7 +62,7 @@ public class CGLIBTest {
 
         @Override
         public Object loadObject() throws Exception {
-            return 22;
+            return "22";
         }
     }
 
@@ -105,6 +106,7 @@ public class CGLIBTest {
 
     @Test
     public void testMethodInterceptor() {
+        System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, "D:\\work\\workspace\\foundation\\src\\main\\java");
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(Base.class);
         enhancer.setCallback(new MICB());
@@ -114,6 +116,7 @@ public class CGLIBTest {
 
     @Test
     public void testInvocationHandler() {
+        System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, "D:\\work\\workspace\\foundation\\src\\main\\java");
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(Base.class);
         enhancer.setCallback(new IHCB());
@@ -124,6 +127,7 @@ public class CGLIBTest {
 
     @Test
     public void testFixedValue() {
+        System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, "D:\\work\\workspace\\foundation\\src\\main\\java");
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(Base.class);
         enhancer.setCallback(new FVCB());
@@ -134,6 +138,7 @@ public class CGLIBTest {
 
     @Test
     public void testLazyLoader() {
+        System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, "D:\\work\\workspace\\foundation\\src\\main\\java");
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(Base.class);
         Base base  = (Base) Enhancer.create(Base.class,new LLCB());
@@ -147,6 +152,7 @@ public class CGLIBTest {
 
     @Test
     public void testDispatcher() {
+        System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, "D:\\work\\workspace\\foundation\\src\\main\\java");
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(Base.class);
         Base base  = (Base) Enhancer.create(Base.class,new DPCB());
@@ -160,6 +166,7 @@ public class CGLIBTest {
 
     @Test
     public void test() {
+        System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, "D:\\work\\workspace\\foundation\\src\\main\\java");
         Enhancer enhancer=new Enhancer();
         enhancer.setSuperclass(ConcreteClassNoInterface.class);
         enhancer.setCallbackFilter(new CFCB());
