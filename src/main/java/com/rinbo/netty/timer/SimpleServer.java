@@ -1,4 +1,4 @@
-package com.rinbo.netty.demo;
+package com.rinbo.netty.timer;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
