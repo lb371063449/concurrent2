@@ -19,12 +19,12 @@ public class RecyclerTest {
             for (int i = 0; i < 20; i++) {
                 objs1.add(MyObj.newInstance());
             }
-            for (int i = 0; i < 2; i++) {
-                MyObj obj = objs1.get(i);
-                if (obj !=null) {
-                    obj.recycle();
-                }
-            }
+//            for (int i = 0; i < 2; i++) {
+//                MyObj obj = objs1.get(i);
+//                if (obj !=null) {
+//                    obj.recycle();
+//                }
+//            }
             for (int i = 0; i < 5; i++) {
                 objs1.add(MyObj.newInstance());
             }

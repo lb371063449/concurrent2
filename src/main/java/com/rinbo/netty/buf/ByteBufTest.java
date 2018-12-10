@@ -29,6 +29,9 @@ public class ByteBufTest {
         byteBuf.discardReadBytes();
         System.out.println("3、readerIndex:" + byteBuf.readerIndex());
         System.out.println("3、writerIndex:" + byteBuf.writerIndex());
+
+        //4、byteBuf回收
+        byteBuf.release();
     }
 
     @Test
