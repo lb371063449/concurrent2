@@ -21,7 +21,7 @@ import java.util.UUID;
 @Slf4j
 public class InputStreamToString_2 {
 
-    //Converting with Java – InputStream
+    //1、BufferedReader
     @Test
     public void usingJava5_convertingAnInputStreamToAString()
             throws IOException {
@@ -37,21 +37,19 @@ public class InputStreamToString_2 {
         log.debug(textBuilder.toString());
     }
 
-    //Converting with Java and a Scanner
+    //2、Scanner
     @Test
     public void usingJava7_convertingAnInputStreamToAString() {
         String originalString = "hello word !\\n" +
                 "my name is rinbo";
         InputStream inputStream = new ByteArrayInputStream(originalString.getBytes());
 
-        String text = null;
-
         Scanner scanner = new Scanner(inputStream, StandardCharsets.UTF_8.name());
-        text = scanner.useDelimiter("\\A").next();
+        String text = scanner.useDelimiter("\\A").next();
         log.debug(text);
     }
 
-    //Converting Using ByteArrayOutputStream
+    //3、ByteArrayOutputStream
     @Test
     public void usingByteArrayOutputStream_convertingAnInputStreamToAString() throws IOException {
         String originalString = "hello word !,my name is rinbo";
@@ -71,7 +69,7 @@ public class InputStreamToString_2 {
         log.debug(new String(byteArray));
     }
 
-    //Converting with java.nio
+    //4、java.nio
     @Test
     public void usingNIOFiles_convertingAnInputStreamToAString() throws IOException {
         String originalString = "hello word !,my name is rinbo";

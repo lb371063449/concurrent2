@@ -71,14 +71,15 @@ public class WriteToFile_4 {
         // RandomAccessFile enable us to write at a specific position in the file given the offset
         // from the beginning of the file – in bytes
         //RandomAccessFile操作的是字节
-        int data1 = 2014;
-        int data2 = 1500;
 
-//        writeToPosition("d:\\test.txt", data1, 4);
-        log.debug((char) readFromPosition("d:\\test.txt", 2) + "");
+        int data1 = 1;
+        int data2 = 2;
+
+        writeToPosition("d:\\test.txt", data1, 2);
+//        log.debug((char) readFromPosition("d:\\test.txt", 2) + "");
 
 //        writeToPosition("d:\\test.txt", data2, 4);
-        log.debug(readFromPosition("d:\\test.txt", 4) + "");
+//        log.debug(readFromPosition("d:\\test.txt", 4) + "");
     }
 
     private void writeToPosition(String filename, int data, long position)
@@ -88,8 +89,22 @@ public class WriteToFile_4 {
         writer.seek(position);
         //写4个字节(int 4个字节)
         writer.writeInt(data);
+        writer.writeChar(1);
         writer.close();
     }
+
+    @Test
+    public void randomAccessFile()
+            throws IOException {
+        RandomAccessFile writer = new RandomAccessFile("d:\\test.txt", "rw");
+        //定位到写的位置
+        byte b = 2;
+        writer.seek(0);
+//        writer.writeByte(b);
+        writer.writeInt(12);
+        writer.close();
+    }
+
 
     private byte readFromPosition(String filename, long position)
             throws IOException {

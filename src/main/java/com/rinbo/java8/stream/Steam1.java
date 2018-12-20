@@ -181,7 +181,10 @@ public class Steam1 {
     public void test_operation4_reduce2() {
         //指定了reduce的初始值10
         int reducedTwoParams =
-                IntStream.range(1, 4).reduce(10, (a, b) -> a + b);
+                IntStream.range(1, 4).reduce(10, (a, b) -> {
+                    log.info("accumulator was called,a = {}, b = {}" ,a,b);
+                    return a + b;
+                });
         log.debug(reducedTwoParams + "");
     }
 
@@ -190,8 +193,11 @@ public class Steam1 {
         //三个参数的reduce必须是parallelStream()
         //第三个参数操作的是第二个参数的集
         int reducedParallel = Arrays.asList(1, 2, 3).parallelStream()
-                .reduce(10, (a, b) -> a + b, (a, b) -> {
-                    log.info("combiner was called");
+                .reduce(10, (a, b) -> {
+                    log.info("accumulator was called,a = {}, b = {}" ,a,b);
+                    return a + b;
+                }, (a, b) -> {
+                    log.info("combiner was called,a = {}, b = {}" ,a,b);
                     return a + b;
                 });
         log.debug(reducedParallel + "");
@@ -251,11 +257,12 @@ public class Steam1 {
         Collector<Product, ?, LinkedList<Product>> toLinkedList =
                 Collector.of(LinkedList::new, LinkedList::add,
                         (first, second) -> {
+                            log.debug("first : " + first + "    second : " + second);
                             first.addAll(second);
                             return first;
                         });
-        LinkedList<Product> linkedListOfPersons =
-                productList.stream().collect(toLinkedList);
+        LinkedList<Product> linkedListOfPersons = productList.stream().collect(toLinkedList);
+        linkedListOfPersons.stream().forEach(i-> System.out.println(i.getPrice()));
     }
 
     //Lazy Invocation
